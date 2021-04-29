@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { livingStudents, followTheLight, reset } from '../helpers/data/studentData';
+import {
+  livingStudents, followTheLight, reset
+} from '../helpers/data/studentData';
 import './App.scss';
 
 function App() {
