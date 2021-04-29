@@ -1,4 +1,4 @@
-const students = [
+let students = [
   {
     id: 1,
     firstName: 'Trinity',
@@ -30,4 +30,11 @@ const makeDead = () => {
   return [livingStudents(), dearlyBeloved()];
 };
 
-export { livingStudents, dearlyBeloved, makeDead };
+const reset = () => {
+  students = students.map((student) => ({ ...student, isDead: false }));
+  return [livingStudents(), dearlyBeloved()];
+};
+
+export {
+  livingStudents, dearlyBeloved, makeDead, reset
+};

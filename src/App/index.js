@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { livingStudents, makeDead } from '../helpers/data/studentData';
+import { livingStudents, makeDead, reset } from '../helpers/data/studentData';
 import './App.scss';
 
 function App() {
@@ -12,9 +12,16 @@ function App() {
     setDearlyBeloved(dead);
   };
 
+  const startOver = () => {
+    const [live, dead] = reset();
+    setLivingStudents(live);
+    setDearlyBeloved(dead);
+  };
+
   return (
     <div className='App'>
       <button onClick={sharkAttack} disabled={ liveStudents.length ? '' : 'disabled'}>{ liveStudents.length ? 'Shark Attack' : 'ALL DEAD'}</button>
+      <button onClick={startOver}>RESET</button>
       <h2>Shark Tank</h2>
       {liveStudents.map((student) => student.firstName)}
       <h2>Graveyard</h2>
