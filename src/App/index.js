@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className='App'>
-      <button onClick={sharkAttack}>Shark Attack</button>
+      <button onClick={sharkAttack} disabled={ liveStudents.length ? '' : 'disabled'}>{ liveStudents.length ? 'Shark Attack' : 'ALL DEAD'}</button>
       <h2>Shark Tank</h2>
       {liveStudents.map((student) => student.firstName)}
       <h2>Graveyard</h2>
