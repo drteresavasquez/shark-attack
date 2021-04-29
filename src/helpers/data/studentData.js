@@ -1,4 +1,4 @@
-let students = [
+const students = [
   {
     id: 1,
     firstName: 'Trinity',
@@ -19,22 +19,4 @@ let students = [
   },
 ];
 
-const livingStudents = () => students.filter((student) => !student.isDead);
-const dearlyBeloved = () => students.filter((student) => student.isDead);
-
-const followTheLight = () => {
-  const living = livingStudents();
-  const randomStudent = living[Math.floor(Math.random() * living.length)];
-  students[students.indexOf(randomStudent)].isDead = true;
-
-  return [livingStudents(), dearlyBeloved()];
-};
-
-const reset = () => {
-  students = students.map((student) => ({ ...student, isDead: false }));
-  return [livingStudents(), dearlyBeloved()];
-};
-
-export {
-  livingStudents, dearlyBeloved, followTheLight, reset
-};
+export default students;
