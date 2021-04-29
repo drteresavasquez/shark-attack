@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import students from '../helpers/data/studentData';
 import './App.scss';
 
 function App() {
-  const [allStudents, setAllStudents] = useState([]);
-
-  useEffect(() => {
-    setAllStudents(students);
-  }, []);
+  const [allStudents, setAllStudents] = useState(students);
 
   const livingStudents = allStudents.filter((student) => !student.isDead);
   const dearlyBeloved = allStudents.filter((student) => student.isDead);
