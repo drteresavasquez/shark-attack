@@ -6,22 +6,16 @@ function App() {
   const [liveStudents, setLivingStudents] = useState(livingStudents());
   const [dearlyBeloved, setDearlyBeloved] = useState([]);
 
-  const sharkAttack = () => {
-    const [live, dead] = makeDead();
-    setLivingStudents(live);
-    setDearlyBeloved(dead);
-  };
-
-  const startOver = () => {
-    const [live, dead] = reset();
+  const doSumthin = (cb) => {
+    const [live, dead] = cb();
     setLivingStudents(live);
     setDearlyBeloved(dead);
   };
 
   return (
     <div className='App'>
-      <button onClick={sharkAttack} disabled={ liveStudents.length ? '' : 'disabled'}>{ liveStudents.length ? 'Shark Attack' : 'ALL DEAD'}</button>
-      <button onClick={startOver}>RESET</button>
+      <button onClick={() => doSumthin(makeDead)} disabled={ liveStudents.length ? '' : 'disabled'}>{ liveStudents.length ? 'Shark Attack' : 'ALL DEAD'}</button>
+      <button onClick={() => doSumthin(reset)}>RESET</button>
       <h2>Shark Tank</h2>
       {liveStudents.map((student) => student.firstName)}
       <h2>Graveyard</h2>
