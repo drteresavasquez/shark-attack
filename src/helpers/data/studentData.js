@@ -22,7 +22,7 @@ let students = [
 const livingStudents = () => students.filter((student) => !student.isDead);
 const dearlyBeloved = () => students.filter((student) => student.isDead);
 
-const makeDead = () => {
+const followTheLight = () => {
   const living = livingStudents();
   const randomStudent = living[Math.floor(Math.random() * living.length)];
   students[students.indexOf(randomStudent)].isDead = true;
@@ -36,5 +36,5 @@ const reset = () => {
 };
 
 export {
-  livingStudents, dearlyBeloved, makeDead, reset
+  livingStudents, dearlyBeloved, followTheLight, reset
 };
