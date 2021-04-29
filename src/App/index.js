@@ -1,36 +1,24 @@
 import React, { useState } from 'react';
+import { livingStudents, makeDead } from '../helpers/data/studentData';
 import './App.scss';
 
 function App() {
-  const [domWriting, setDomWriting] = useState('Nothing Here!');
+  const [liveStudents, setLivingStudents] = useState(livingStudents());
+  const [dearlyBeloved, setDearlyBeloved] = useState([]);
 
-  const handleClick = (e) => {
-    console.warn(`You clicked ${e.target.id}`);
-    setDomWriting(`You clicked ${e.target.id}! Check the Console!`);
+  const sharkAttack = () => {
+    const [live, dead] = makeDead();
+    setLivingStudents(live);
+    setDearlyBeloved(dead);
   };
 
   return (
     <div className='App'>
-      <h2>INSIDE APP COMPONENT</h2>
-      <div>
-        <button
-          id='this-button'
-          className='btn btn-info'
-          onClick={handleClick}
-        >
-          I am THIS button
-        </button>
-      </div>
-      <div>
-        <button
-          id='that-button'
-          className='btn btn-primary mt-3'
-          onClick={handleClick}
-        >
-          I am THAT button
-        </button>
-      </div>
-      <h3>{domWriting}</h3>
+      <button onClick={sharkAttack}>Shark Attack</button>
+      <h2>Shark Tank</h2>
+      {liveStudents.map((student) => student.firstName)}
+      <h2>Graveyard</h2>
+      {dearlyBeloved.map((student) => student.firstName)}
     </div>
   );
 }
